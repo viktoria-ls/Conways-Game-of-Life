@@ -74,15 +74,11 @@ def update_grid():
     
 
 def display_grid():
-    divider = "\n  " + ("-" * (SIZE * 4 + 1))
-    print("    ", end="")
-
-    for i in range(SIZE):
-        print(str(i), end="   ")
+    divider = "\n  " + ("-" * (SIZE * 4))
     print(divider)
 
     for i in range(SIZE):
-        print(str(i) + " | ", end="")
+        print(" | ", end="")
         for j in range(SIZE):
             print(grid[i][j], end=" | ")
         print(divider)
