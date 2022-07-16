@@ -8,6 +8,7 @@ The rules of Conway's Game of Life can be generalized to the following:
 - All other cells die or stay dead.
 
 ## Current Progress
+- Integrating Django
 - The above rules have been implemented.
 - The program is limited to a finite grid size.
 - Only a text UI is available for now.
