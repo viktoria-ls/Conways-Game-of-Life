@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Life</title>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}?{% now 'U' %}">
 </head>
 <body>
     <h1>Conway's Game of Life</h1>
@@ -16,28 +16,13 @@
     <input type="number" id="size" placeholder="Grid size">
     <button id="size_submit">Enter</button>
 
-    <div id="grid">
-        <div class="row">
-            <div class="cell dead" id="0-0"></div><div class="cell dead" id="0-1"></div><div class="cell dead" id="0-2"></div><div class="cell dead" id="0-3"></div><div class="cell dead" id="0-4"></div>
-        </div>
-        <div class="row">
-            <div class="cell dead" id="1-0"></div><div class="cell dead" id="1-1"></div><div class="cell dead" id="1-2"></div><div class="cell dead" id="1-3"></div><div class="cell dead" id="1-4"></div>
-        </div>
-        <div class="row">
-            <div class="cell dead" id="2-0"></div><div class="cell dead" id="2-1"></div><div class="cell dead" id="2-2"></div><div class="cell dead" id="2-3"></div><div class="cell dead" id="2-4"></div>
-        </div>
-        <div class="row">
-            <div class="cell dead" id="3-0"></div><div class="cell dead" id="3-1"></div><div class="cell dead" id="3-2"></div><div class="cell dead" id="3-3"></div><div class="cell dead" id="3-4"></div>
-        </div>
-        <div class="row">
-            <div class="cell dead" id="4-0"></div><div class="cell dead" id="4-1"></div><div class="cell dead" id="4-2"></div><div class="cell dead" id="4-3"></div><div class="cell dead" id="4-4"></div>
-        </div>
-    </div>
+    <div id="grid"></div>
 
-    <button id="start_stop">Start</button>
+    <button id="start_stop" disabled>Start</button>
+    <button id="next">Next</button>
     <button id="reset">Reset</button>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-    <script src="{% static 'js/main.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="{% static 'js/main.js' %}?{% now 'U' %}"></script>
 </body>
 </html>
