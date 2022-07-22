@@ -13,5 +13,6 @@ def index(request):
 def nextState(request):
     curr_grid = json.loads(request.GET.get('grid'))
     next_grid = conway_grid.update_grid(curr_grid)
-    return JsonResponse({'grid': next_grid}, status=200)
+    canUpdate = curr_grid != next_grid
+    return JsonResponse({'grid': next_grid, 'canUpdate': canUpdate}, status=200)
     

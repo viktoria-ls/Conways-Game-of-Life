@@ -22,7 +22,6 @@ def get_neighbors(row, col, size):
     return neighbors
 
 def update_grid(curr_grid):
-    can_update = False
     size = len(curr_grid[0])
     next_grid = [x[:] for x in curr_grid]
 
@@ -46,9 +45,5 @@ def update_grid(curr_grid):
                     next_grid[i][j] = 1
                 else:
                     next_grid[i][j] = 0
-
-            if next_grid[i][j] != cell_val:
-                can_update = True
-    if can_update != None:
-        return next_grid
-    return None
+                
+    return next_grid

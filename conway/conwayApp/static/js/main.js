@@ -1,7 +1,9 @@
 $(document).ready(function() {
     var running = false;
+    var canUpdate = true;
     var size = 5;
-    var grid = []
+    var grid = [];
+    var interval = 1000;
     
     function initGrid(n) {
         grid = [];
@@ -20,14 +22,14 @@ $(document).ready(function() {
         }
     }
 
-    // TO BE FIXED
-    function updateGrid() {
+    function getNextGrid() {
         $.ajax({
             type: 'GET',
             url: 'next',
             data: {grid: JSON.stringify(grid)},
             success: function(response) {
                 grid = response.grid;
+                canUpdate = response.canUpdate;
                 for(var i = 0; i < size; i++) {
                     for(var j = 0; j < size; j++) {
                         var cell = $('#' + i + '-' + j);
@@ -45,11 +47,13 @@ $(document).ready(function() {
                         }
                     }
                 }
+            },
+            complete: function(data) {
+                if(canUpdate && running)
+                    setTimeout(getNextGrid, interval);
             }
         });
     }
-    
-    initGrid(size);
     
     $('#size_submit').click(function(e) {
         size = $('#size').val();
@@ -58,15 +62,15 @@ $(document).ready(function() {
     });
     
     $('#start_stop').click(function(e) {
+        canUpdate = true;
         running = !running;
-        $('#run').html(running.toString());
     
         if(running) {
             $(e.target).html("Stop");
             $('.cell').each(function() {
                 $(this).css("cursor", "auto");
             })
-            updateGrid();
+            getNextGrid();
         }
         else {
             $(e.target).html("Start");
@@ -77,11 +81,13 @@ $(document).ready(function() {
     });
 
     $('#next').click(function(e) {
-        updateGrid();
+        running = false;
+        $('#start_stop').html("Start");
+        if(canUpdate)
+            getNextGrid();
     });
-
     
-    $('#reset').click(function(e) {
+    $('#clear').click(function(e) {
         $('#grid').empty();
         initGrid(size);
     });
@@ -101,5 +107,7 @@ $(document).ready(function() {
             }
         }
     });
+
+    initGrid(size);
 });
 

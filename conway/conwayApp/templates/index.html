@@ -11,16 +11,15 @@
 </head>
 <body>
     <h1>Conway's Game of Life</h1>
-    <p>Running: <span id="run">Initial</span></p>
 
     <input type="number" id="size" placeholder="Grid size">
     <button id="size_submit">Enter</button>
 
     <div id="grid"></div>
 
-    <button id="start_stop" disabled>Start</button>
+    <button id="start_stop">Start</button>
     <button id="next">Next</button>
-    <button id="reset">Reset</button>
+    <button id="clear">Clear</button>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="{% static 'js/main.js' %}?{% now 'U' %}"></script>
