@@ -8,18 +8,38 @@ The rules of Conway's Game of Life can be generalized to the following:
 - All other cells die or stay dead.
 
 ## Current Progress
-- Integrating Django
 - The above rules have been implemented.
 - The program is limited to a finite grid size.
-- Only a text UI is available for now.
+- Runs on Django server
+- Updating frontend
+- Fixing minor bugs with buttons
+- Making update interval setting
 
-## How to Configure and Run the Program
-Note that all configurations have to be made directly in the main.py file.
-- Change grid size by updating the `SIZE` value.
-- Change the interval of displaying grid changes by updating the `update_speed` value.
-- Set the initial "live cells" of the grid by updating the `live` value which is a list of grid coordinates (Base this off of inputted `SIZE` value). Make sure these are **VALID COORDINATES**.
-- Run using `python main.py` on the command line in the same folder as the file.
-
-## To do
-- Make a proper GUI with direct user input.
-- Implement "infinite" grid sizing.
+## How to Run the Server Locally
+Make sure you have Python, PIP, and Git Bash installed.
+1. Clone Git repository in chosen directory
+```
+git clone https://github.com/viktoria-ls/Conways-Game-of-Life.git
+```
+2. Create virtual environment
+```
+py -m venv my_venv
+```
+3. Activate virtual environment
+```
+my_venv/Scripts/activate
+```
+4. Install Python packages
+```
+pip install -r requirements.txt
+```
+5. Navigate into Django project folder and migrate Django project
+```
+cd conway/
+python manage.py migrate
+```
+6. Run server
+```
+python manage.py runserver
+```
+7. View page at localhost:8000 on web browser
